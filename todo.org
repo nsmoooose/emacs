@@ -1,0 +1,4 @@
+Write extensions to emacs
+
+* TODO Create a good default emacs config file
+* TODO Create an install script for extensions
