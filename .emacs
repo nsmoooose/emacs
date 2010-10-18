@@ -10,8 +10,13 @@
 ;(setq c-default-style "bsd")
 ;(setq-default c-default-style "bsd")
 ;(setq-default c-basic-offset 4)
-;(setq-default show-trailing-whitespace t)
-;(column-number-mode 1)
+
+; Trailing whitespace shall be displayed on every line.
+(setq-default show-trailing-whitespace t)
+
+; Show both row and column number.
+(column-number-mode 1)
+
 ;(setq default-tab-width 4)
 
 ; Switch between opened windows.
