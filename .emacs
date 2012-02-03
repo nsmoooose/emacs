@@ -24,7 +24,8 @@
  '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
- '(tab-width 4))
+ '(tab-width 4)
+ '(truncate-lines t))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
