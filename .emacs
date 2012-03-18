@@ -1,6 +1,7 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-
+;; ******************************************************
+;; SMART TABS configuration.
 (require 'smart-tabs-mode)
 ;; C/C++
 (add-hook 'c-mode-hook 'smart-tabs-mode-enable)
@@ -10,7 +11,10 @@
 (add-hook 'js2-mode-hook 'smart-tabs-mode-enable)
 (smart-tabs-advice js2-indent-line js2-basic-offset)
 
-
+;; ******************************************************
+;; My own compile commands that always are invoked in the
+;; root directory of the git repository.
+(require 'hn-compile)
 
 
 (custom-set-variables
@@ -19,6 +23,7 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(compilation-scroll-output (quote first-error))
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
