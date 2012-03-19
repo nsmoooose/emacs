@@ -61,4 +61,7 @@
     )
   )
 
+(global-set-key (kbd "M-p c") 'hn-clean)
+(global-set-key (kbd "M-p b") 'hn-compile)
+
 (provide 'hn-compile)
