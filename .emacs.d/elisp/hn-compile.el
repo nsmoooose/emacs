@@ -29,10 +29,20 @@
 	)
   )
 
+(defun hn-kill-compile-buffer ()
+  (if (get-buffer "*compilation*") ; If old compile window exists
+	  (progn
+		(delete-windows-on (get-buffer "*compilation*")) ; Delete the compilation windows
+		(kill-buffer "*compilation*") ; and kill the buffers
+		)
+	)
+  )
+
 (defun hn-clean ()
   "Cleans the current project by calling \"make clean\"."
   (interactive)
   (progn
+	(hn-kill-compile-buffer)
     (if (not (equal (hn-find-vc-root) nil))
 		(progn
 		  (setq default-directory (hn-find-vc-root))
@@ -49,10 +59,12 @@
   "Compiles the current project by calling \"make all\"."
   (interactive)
   (progn
+	(hn-kill-compile-buffer)
     (if (not (equal (hn-find-vc-root) nil))
 		(progn
 		  (setq default-directory (hn-find-vc-root))
 		  (compile "make all")
+		  (select-window (get-buffer-window "*compilation*"))
 		  )
 	  (if (called-interactively-p 'any)
 		  (message "Did not find vc root directory")
