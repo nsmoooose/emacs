@@ -73,7 +73,19 @@
     )
   )
 
+(defun hn-tags ()
+  "Creates a TAGS file in the root directory of the repository."
+  (interactive)
+  (if (not (equal (hn-find-vc-root) nil))
+	  (progn
+		(setq default-directory (hn-find-vc-root))
+		(shell-command "ctags -e --recurse=yes")
+		)
+	)
+  )
+
 (global-set-key (kbd "M-p c") 'hn-clean)
 (global-set-key (kbd "M-p b") 'hn-compile)
+(global-set-key (kbd "M-p t") 'hn-tags)
 
 (provide 'hn-compile)
