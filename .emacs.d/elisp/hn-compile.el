@@ -78,8 +78,15 @@
   (interactive)
   (if (not (equal (hn-find-vc-root) nil))
 	  (progn
+		(if (get-buffer "TAGS")
+			(progn
+			  (delete-windows-on (get-buffer "TAGS"))
+			  (kill-buffer "TAGS")
+			  )
+		  )
 		(setq default-directory (hn-find-vc-root))
 		(shell-command "ctags -e --recurse=yes")
+		(visit-tags-table (concat default-directory "/TAGS"))
 		)
 	)
   )
