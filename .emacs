@@ -16,6 +16,11 @@
 ;; root directory of the git repository.
 (require 'hn-compile)
 
+;; ******************************************************
+;; Auto complete installation and configuration.
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
