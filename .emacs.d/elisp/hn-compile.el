@@ -91,8 +91,25 @@
 	)
   )
 
+(defun hn-keyboard-quit ()
+  "Extends the normal keyboard-quit with removal of buffers not needed."
+  (interactive)
+  (setq buffer-names '("*Help*" "*Backtrace*" "*Completions*" "*scratch*"
+					   "*Buffer List*" "*compilation*"))
+  (dolist (name buffer-names)
+	(if (get-buffer name)
+		(progn
+		  (delete-windows-on (get-buffer name))
+		  (kill-buffer name)
+		  )
+	  )
+	)
+  (keyboard-quit)
+  )
+
 (global-set-key (kbd "M-p c") 'hn-clean)
 (global-set-key (kbd "M-p b") 'hn-compile)
 (global-set-key (kbd "M-p t") 'hn-tags)
+(global-set-key (kbd "C-g") 'hn-keyboard-quit)
 
 (provide 'hn-compile)

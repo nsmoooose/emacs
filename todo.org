@@ -1,0 +1,14 @@
+* DONE Tags files
+** DONE Set the tags file based on the source control directory.
+** DONE Build tags file and place it in the root of the source control dir.
+* TODO Comment/Uncomment command.
+** TODO C/C++
+** TODO Python
+* TODO Indenting left/right and keep selection
+  Keeping the selection makes it easy to continue do the indenting.
+* TODO Kill line without putting the text in the copy paste buffer.
+* TODO Compile
+** TODO Special window layout when starting compiler.
+** DONE Hide compiler window when pressing ESC.
+   Implemented using C-g to kill of all temporary windows that lingers
+   and that you don't want anymore.
