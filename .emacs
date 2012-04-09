@@ -22,6 +22,12 @@
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 
+;; ******************************************************
+;; Want clock and battery information in status bar.
+(setq display-time-24hr-format t)
+(display-time)
+(display-battery-mode)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
