@@ -20,6 +20,7 @@
 ;; Make M-f behave a little bit more sane.
 (require 'misc)
 (global-set-key (kbd "M-f") 'forward-to-word)
+(global-set-key (kbd "C-<right>") 'forward-to-word)
 
 ;; ******************************************************
 ;; Auto complete installation and configuration.
