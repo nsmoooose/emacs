@@ -17,6 +17,11 @@
 (require 'hn-compile)
 
 ;; ******************************************************
+;; Make M-f behave a little bit more sane.
+(require 'misc)
+(global-set-key (kbd "M-f") 'forward-to-word)
+
+;; ******************************************************
 ;; Auto complete installation and configuration.
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
