@@ -73,6 +73,24 @@
     )
   )
 
+(defun hn-tests ()
+  "Runs the tests in current project by calling \"make tests\"."
+  (interactive)
+  (progn
+	(hn-kill-compile-buffer)
+    (if (not (equal (hn-find-vc-root) nil))
+		(progn
+		  (setq default-directory (hn-find-vc-root))
+		  (compile "make tests")
+		  (select-window (get-buffer-window "*compilation*"))
+		  )
+	  (if (called-interactively-p 'any)
+		  (message "Did not find vc root directory")
+		)
+      )
+    )
+  )
+
 (defun hn-tags ()
   "Creates a TAGS file in the root directory of the repository."
   (interactive)
@@ -109,6 +127,7 @@
 
 (global-set-key (kbd "M-p c") 'hn-clean)
 (global-set-key (kbd "M-p b") 'hn-compile)
+(global-set-key (kbd "M-p u") 'hn-tests)
 (global-set-key (kbd "M-p t") 'hn-tags)
 (global-set-key (kbd "C-g") 'hn-keyboard-quit)
 
