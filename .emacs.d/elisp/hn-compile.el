@@ -113,7 +113,8 @@
   "Extends the normal keyboard-quit with removal of buffers not needed."
   (interactive)
   (setq buffer-names '("*Help*" "*Backtrace*" "*Completions*" "*scratch*"
-		       "*Buffer List*" "*compilation*" "*Warnings*" "*Shell Command Output*"))
+					   "*Buffer List*" "*compilation*" "*Warnings*" "*Shell Command Output*"
+					   "*vc-diff*"))
   (dolist (name buffer-names)
 	(if (get-buffer name)
 		(progn
