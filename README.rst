@@ -47,6 +47,10 @@ require that you have ctags installed. The command are executed in the root dire
 of the current git repository. This makes it convenient to do M-. (find-tag) directly
 to move to the file where a function was defined.
 
+A hook is also installed. So when the first file is opened within a .git repository
+the TAGS table will be automatically built and loaded. So for a large git repository
+it might take some time to get emacs started.
+
 Auto completion
 ===============
 

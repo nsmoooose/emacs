@@ -1,6 +1,10 @@
 * DONE Tags files
 ** DONE Set the tags file based on the source control directory.
 ** DONE Build tags file and place it in the root of the source control dir.
+* DONE Generate TAGS file upon first file
+  Starting without any file and when the current directory isn't inside
+  a .git directory. When you open the first file that is within a .git
+  repository then you want to create the TAGS file.
 * TODO Comment/Uncomment command.
 ** TODO C/C++
 ** TODO Python
