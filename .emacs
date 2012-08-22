@@ -27,12 +27,19 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
+;; Make C-n, C-p work with popups as well.
+(setq ac-use-menu-map t)
 
 ;; ******************************************************
 ;; Want clock and battery information in status bar.
 (setq display-time-24hr-format t)
 (display-time)
 (display-battery-mode)
+
+;; ******************************************************
+;; Pressing any key after a selection is made will kill all
+;; that text and replace it with the newly entered text.
+(delete-selection-mode 1)
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
