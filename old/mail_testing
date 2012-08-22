@@ -1,7 +1,0 @@
-(require 'vm-autoloads)
-(setq vm-primary-inbox "imap:HOST:PORT:Inbox:AUTH:USER:PASSWORD")
-(setq vm-imap-account-alist
-	  '(
-		("imap-ssl:imap.proceranetworks.com:993:*:login:henrikn:*" "henrikn")
-		)
-	  )
