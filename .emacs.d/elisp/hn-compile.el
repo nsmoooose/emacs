@@ -103,7 +103,7 @@
 			  )
 		  )
 		(setq default-directory (hn-find-vc-root))
-		(shell-command "ctags -e --recurse=yes")
+		(shell-command "ctags -e --recurse=yes --exclude=mootools*.js --exclude=dygraph*.js --exclude=jx*.js")
 		(visit-tags-table (concat default-directory "/TAGS"))
 		)
 	)
