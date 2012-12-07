@@ -29,6 +29,8 @@
 (ac-config-default)
 ;; Make C-n, C-p work with popups as well.
 (setq ac-use-menu-map t)
+;; Don't ignore upper and lower case
+(setq ac-ignore-case nil)
 
 ;; ******************************************************
 ;; Want clock and battery information in status bar.
