@@ -6,6 +6,7 @@
   a .git directory. When you open the first file that is within a .git
   repository then you want to create the TAGS file.
 * TODO Autocomplete based on ctags
+  https://github.com/whitypig/auto-complete-ctags
   https://github.com/whitypig/auto-complete-etags
 * TODO Autocomplete based on clang
 * TODO Comment/Uncomment command.
