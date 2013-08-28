@@ -53,6 +53,7 @@
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
+ '(rst-level-face-base-color "black")
  '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
  '(tab-width 4)
