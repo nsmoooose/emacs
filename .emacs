@@ -59,8 +59,13 @@
  '(tab-width 4)
  '(truncate-lines t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(rst-level-1 ((t (:weight bold))))
+ '(rst-level-2 ((t (:weight bold))))
+ '(rst-level-3 ((t (:weight bold))))
+ '(rst-level-4 ((t (:weight bold))))
+ '(rst-level-5 ((t (:weight bold))))
+ '(rst-level-6 ((t (:weight bold)))))
