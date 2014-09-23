@@ -32,6 +32,13 @@
 ;; Don't ignore upper and lower case
 (setq ac-ignore-case nil)
 
+
+;; ******************************************************
+;; ESS R programming environment.
+(add-to-list 'load-path "~/.emacs.d/ESS/lisp/")
+(load "ess-site")
+
+
 ;; ******************************************************
 ;; Want clock and battery information in status bar.
 (setq display-time-24hr-format t)
