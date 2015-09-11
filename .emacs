@@ -76,3 +76,13 @@
  '(rst-level-4 ((t (:weight bold))))
  '(rst-level-5 ((t (:weight bold))))
  '(rst-level-6 ((t (:weight bold)))))
+
+;; ******************************************************
+;; Emacs package repository used with 'list-packages'
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t)
+  (package-initialize))
