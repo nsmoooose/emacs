@@ -86,3 +86,12 @@
    '("melpa" . "http://melpa.org/packages/")
    t)
   (package-initialize))
+
+;; ******************************************************
+;; Alter location of backup files that starts with #
+;; This since it will confuse some tools (Ember.js)
+(setq backup-directory-alist
+	  `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+	  `((".*" ,temporary-file-directory t)))
+;; (setq create-lockfiles nil)
