@@ -50,10 +50,3 @@ to move to the file where a function was defined.
 A hook is also installed. So when the first file is opened within a .git repository
 the TAGS table will be automatically built and loaded. So for a large git repository
 it might take some time to get emacs started.
-
-Auto completion
-===============
-
-Auto completion lisp package from https://github.com/m2ym/auto-complete
-
-It is well designed and all auto completions are based on opened files.
