@@ -22,6 +22,12 @@
 (global-set-key (kbd "M-f") 'forward-to-word)
 (global-set-key (kbd "C-<right>") 'forward-to-word)
 
+;; ******************************************************
+;; Easier commands to switch between windows
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+(global-set-key (kbd "C-x <right>") 'windmove-right)
 
 ;; ******************************************************
 ;; ESS R programming environment.
