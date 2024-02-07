@@ -1,37 +1,7 @@
-* DONE Tags files
-** DONE Set the tags file based on the source control directory.
-** DONE Build tags file and place it in the root of the source control dir.
-* DONE Generate TAGS file upon first file
-  Starting without any file and when the current directory isn't inside
-  a .git directory. When you open the first file that is within a .git
-  repository then you want to create the TAGS file.
-* TODO Autocomplete based on ctags
-  https://github.com/whitypig/auto-complete-ctags
-  https://github.com/whitypig/auto-complete-etags
-* TODO Autocomplete based on clang
-* TODO Comment/Uncomment command.
-** TODO C/C++
-** TODO Python
-* TODO Indenting left/right and keep selection
-  Keeping the selection makes it easy to continue do the indenting.
+Make a list of the melpa packages that we wish to use:
 
-  Stumbled upon this one.
-  http://stackoverflow.com/questions/3156450/shift-a-region-or-line-in-emacs
-* TODO Kill line without putting the text in the copy paste buffer.
-  Something like this might work.
-
-  (defun ruthlessly-kill-line ()
-    "Deletes a line, but does not put it in the kill-ring."
-    (interactive)
-    (kill-line 1)
-    (setq kill-ring (cdr kill-ring)))
-
-* TODO Compile
-** TODO Special window layout when starting compiler.
-** DONE Hide compiler window when pressing ESC.
-   Implemented using C-g to kill of all temporary windows that lingers
-   and that you don't want anymore.
-
-* TODO Refactor into multiple elisp files.
-  A lot of functions are placed in the hn-compile.el file. Split things up
-  and document it properly.
+* ESS for R development
+* git
+* go?
+* Rust
+* smarttabs

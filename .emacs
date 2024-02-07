@@ -1,17 +1,6 @@
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
 ;; ******************************************************
-;; SMART TABS configuration.
-(require 'smart-tabs-mode)
-;; C/C++
-(add-hook 'c-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice c-indent-line c-basic-offset)
-(smart-tabs-advice c-indent-region c-basic-offset)
-;; JavaScript
-(add-hook 'js2-mode-hook 'smart-tabs-mode-enable)
-(smart-tabs-advice js2-indent-line js2-basic-offset)
-
-;; ******************************************************
 ;; My own compile commands that always are invoked in the
 ;; root directory of the git repository.
 (require 'hn-compile)
@@ -30,21 +19,20 @@
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 
 ;; ******************************************************
-;; ESS R programming environment.
-(add-to-list 'load-path "~/.emacs.d/ESS/lisp/")
-(load "ess-site")
-
-
-;; ******************************************************
-;; Want clock and battery information in status bar.
-(setq display-time-24hr-format t)
-(display-time)
-(display-battery-mode)
-
-;; ******************************************************
 ;; Pressing any key after a selection is made will kill all
 ;; that text and replace it with the newly entered text.
 (delete-selection-mode 1)
+
+
+;; ******************************************************
+;; Install desired packages:
+;;    auto-complete
+
+;; list the packages you want
+;; * magit = git tool
+;; * smart-tabs-mode = indent with tabs and align with spaces
+;; * ess = emacs speak statistics
+(setq package-list '(magit smart-tabs-mode ess))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -92,13 +80,6 @@
 	  `((".*" ,temporary-file-directory t)))
 ;; (setq create-lockfiles nil)
 
-;; ******************************************************
-;; Install desired packages:
-;;    auto-complete
-
-; list the packages you want
-(setq package-list '(auto-complete))
-
 ; list the repositories containing them
 ;(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
 ;                         ("gnu" . "http://elpa.gnu.org/packages/")
@@ -116,11 +97,6 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
 ;; ******************************************************
-;; Configure auto-complete
-
-;; Make C-n, C-p work with popups as well.
-(setq ac-use-menu-map t)
-;; Don't ignore upper and lower case
-(setq ac-ignore-case nil)
+;; SMART TABS configuration.
+(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'ruby 'nxml)
