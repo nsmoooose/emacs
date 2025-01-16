@@ -41,6 +41,7 @@
   ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(compilation-scroll-output (quote first-error))
+ '(custom-enabled-themes '(modus-vivendi))
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
@@ -67,7 +68,7 @@
   (require 'package)
   (add-to-list
    'package-archives
-   '("melpa" . "http://melpa.org/packages/")
+   '("melpa-stable" . "https://stable.melpa.org/packages/")
    t)
   (package-initialize))
 
