@@ -31,7 +31,7 @@
 ;; list the packages you want
 ;; * magit = git tool
 ;; * smart-tabs-mode = indent with tabs and align with spaces
-;; * ess = emacs speak statistics
+;; * ess = emacs speak statistics (R)
 (setq package-list '(magit smart-tabs-mode ess))
 
 (custom-set-variables
@@ -99,4 +99,4 @@
 
 ;; ******************************************************
 ;; SMART TABS configuration.
-(smart-tabs-insinuate 'c 'c++ 'java 'javascript 'ruby 'nxml)
+;; (smart-tabs-insinuate 'c 'c++ 'java 'javascript 'ruby 'nxml)
