@@ -49,6 +49,7 @@
  '(scroll-bar-mode nil)
  '(show-trailing-whitespace t)
  '(tab-width 4)
+ '(tool-bar-mode nil)
  '(truncate-lines t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
