@@ -32,7 +32,7 @@
 ;; * magit = git tool
 ;; * smart-tabs-mode = indent with tabs and align with spaces
 ;; * ess = emacs speak statistics (R)
-(setq package-list '(magit smart-tabs-mode ess))
+(setq package-list '(magit smart-tabs-mode ess kmb))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -102,3 +102,14 @@
 ;; ******************************************************
 ;; SMART TABS configuration.
 ;; (smart-tabs-insinuate 'c 'c++ 'java 'javascript 'ruby 'nxml)
+
+; This package is needed for 'kmb-kill-matching-buffers-no-ask'
+; when pressing C-g.
+(require 'kmb)
+
+(global-set-key (kbd "M-p c") 'hn-clean)
+(global-set-key (kbd "M-p b") 'hn-compile)
+(global-set-key (kbd "M-p g") 'magit-status)
+(global-set-key (kbd "M-p u") 'hn-tests)
+(global-set-key (kbd "M-p t") 'hn-tags)
+(global-set-key (kbd "C-g") 'hn-keyboard-quit)

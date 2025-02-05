@@ -130,6 +130,7 @@
   (interactive)
   (setq buffer-names '("*Help*" "*Backtrace*" "*Completions*" "*scratch*"
 					   "*Buffer List*" "*compilation*" "*Warnings*" "*Shell Command Output*"
+					   "*Compile-Log*"
 					   "*vc-diff*"))
   (dolist (name buffer-names)
 	(if (get-buffer name)
@@ -139,13 +140,8 @@
 		  )
 	  )
 	)
+  (kmb-kill-matching-buffers-no-ask "magit.*")
   (keyboard-quit)
   )
-
-(global-set-key (kbd "M-p c") 'hn-clean)
-(global-set-key (kbd "M-p b") 'hn-compile)
-(global-set-key (kbd "M-p u") 'hn-tests)
-(global-set-key (kbd "M-p t") 'hn-tags)
-(global-set-key (kbd "C-g") 'hn-keyboard-quit)
 
 (provide 'hn-compile)
