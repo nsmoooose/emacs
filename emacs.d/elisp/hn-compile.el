@@ -131,6 +131,7 @@
   (setq buffer-names '("*Help*" "*Backtrace*" "*Completions*" "*scratch*"
 					   "*Buffer List*" "*compilation*" "*Warnings*" "*Shell Command Output*"
 					   "*Compile-Log*"
+					   "*xref*"
 					   "*vc-diff*"))
   (dolist (name buffer-names)
 	(if (get-buffer name)
