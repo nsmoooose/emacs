@@ -5,4 +5,4 @@ if [[ -d ~/.emacs.d ]]; then
 fi
 echo "Copying emacs scripts to the home folder: ~/.emacs.d"
 cp -r emacs.d ~/.emacs.d
-cp emacs ~/.emacs
+cp emacs.el ~/.emacs

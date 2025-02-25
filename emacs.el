@@ -26,20 +26,22 @@
 
 ;; ******************************************************
 ;; Install desired packages:
-;;    auto-complete
-
-;; list the packages you want
 ;; * smart-tabs-mode = indent with tabs and align with spaces
 ;; * kmb = kill matching buffer. Kill buffer without confirmation
 ;; * magit = git tool
 ;; * ess = emacs speak statistics (R)
 ;; * rust-mode = major mode for the Rust programming language
+;; * go-mode = major mode for the Go programming language
 (setq package-list '(smart-tabs-mode kmb))
 
 (when (file-exists-p "/usr/bin/git")
 	  (setq package-list (append package-list '(magit))))
 (when (file-exists-p "/usr/bin/R")
 	  (setq package-list (append package-list '(ess))))
+(when (file-exists-p "/usr/bin/cargo")
+	  (setq package-list (append package-list '(rust-mode))))
+(when (file-exists-p "/usr/bin/go")
+	  (setq package-list (append package-list '(go-mode))))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
