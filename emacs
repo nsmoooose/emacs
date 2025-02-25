@@ -29,10 +29,17 @@
 ;;    auto-complete
 
 ;; list the packages you want
-;; * magit = git tool
 ;; * smart-tabs-mode = indent with tabs and align with spaces
+;; * kmb = kill matching buffer. Kill buffer without confirmation
+;; * magit = git tool
 ;; * ess = emacs speak statistics (R)
-(setq package-list '(magit smart-tabs-mode ess kmb))
+;; * rust-mode = major mode for the Rust programming language
+(setq package-list '(smart-tabs-mode kmb))
+
+(when (file-exists-p "/usr/bin/git")
+	  (setq package-list (append package-list '(magit))))
+(when (file-exists-p "/usr/bin/R")
+	  (setq package-list (append package-list '(ess))))
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
@@ -107,9 +114,15 @@
 ; when pressing C-g.
 (require 'kmb)
 
-(global-set-key (kbd "M-p c") 'hn-clean)
-(global-set-key (kbd "M-p b") 'hn-compile)
-(global-set-key (kbd "M-p g") 'magit-status)
-(global-set-key (kbd "M-p u") 'hn-tests)
-(global-set-key (kbd "M-p t") 'hn-tags)
 (global-set-key (kbd "C-g") 'hn-keyboard-quit)
+
+(when (file-exists-p "/usr/bin/git")
+	  (global-set-key (kbd "M-p g") 'magit-status))
+
+(when (file-exists-p "/usr/bin/make")
+	  (global-set-key (kbd "M-p c") 'hn-clean)
+	  (global-set-key (kbd "M-p b") 'hn-compile)
+	  (global-set-key (kbd "M-p u") 'hn-tests))
+
+(when (file-exists-p "/usr/bin/ctags")
+	  (global-set-key (kbd "M-p t") 'hn-tags))
