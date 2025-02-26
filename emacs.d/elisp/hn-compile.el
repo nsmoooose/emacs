@@ -117,13 +117,13 @@
 	)
   )
 
-(defun hn-build-tag-on-find-file ()
-  (if (not (equal (hn-find-vc-root) nil))
-	  (if (not (get-buffer "TAGS")) (hn-tags) )
-	)
-)
+;; (defun hn-build-tag-on-find-file ()
+;;   (if (not (equal (hn-find-vc-root) nil))
+;; 	  (if (not (get-buffer "TAGS")) (hn-tags) )
+;; 	)
+;; )
 
-(add-hook 'find-file-hook 'hn-build-tag-on-find-file)
+; (add-hook 'find-file-hook 'hn-build-tag-on-find-file)
 
 (defun hn-keyboard-quit ()
   "Extends the normal keyboard-quit with removal of buffers not needed."
