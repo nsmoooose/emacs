@@ -97,6 +97,14 @@
     )
   )
 
+(defun hn-help ()
+  "Help for my .emacs configuratoin"
+  (interactive)
+  (progn
+	(find-file "~/.emacs.d/help.rst")
+	)
+  )
+
 (defun hn-tags ()
   "Creates a TAGS file in the root directory of the repository."
   (interactive)

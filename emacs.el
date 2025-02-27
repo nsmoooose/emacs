@@ -23,27 +23,6 @@
 ;; that text and replace it with the newly entered text.
 (delete-selection-mode 1)
 
-;; ******************************************************
-;; Install desired packages:
-;; * smart-tabs-mode = indent with tabs and align with spaces
-;; * kmb = kill matching buffer. Kill buffer without confirmation
-;; * magit = git tool
-;; * ess = emacs speak statistics (R)
-;; * rust-mode = major mode for the Rust programming language
-;; * go-mode = major mode for the Go programming language
-(setq package-list '(smart-tabs-mode kmb treemacs))
-
-(when (file-exists-p "/usr/bin/git")
-  (setq package-list (append package-list '(magit))))
-(when (file-exists-p "/usr/bin/R")
-  (setq package-list (append package-list '(ess))))
-(when (file-exists-p "/usr/bin/cargo")
-  (setq package-list (append package-list '(rust-mode))))
-(when (file-exists-p "/usr/bin/go")
-  (setq package-list (append package-list '(go-mode))))
-(when (file-exists-p "/usr/bin/clangd")
-  (setq package-list (append package-list '(lsp-mode flycheck lsp-treemacs))))
-
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -74,16 +53,6 @@
  '(rst-level-6 ((t (:weight bold)))))
 
 ;; ******************************************************
-;; Emacs package repository used with 'list-packages'
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa-stable" . "https://stable.melpa.org/packages/")
-   t)
-  (package-initialize))
-
-;; ******************************************************
 ;; Alter location of backup files that starts with #
 ;; This since it will confuse some tools (Ember.js)
 (setq backup-directory-alist
@@ -92,28 +61,81 @@
 	  `((".*" ,temporary-file-directory t)))
 ;; (setq create-lockfiles nil)
 
-; list the repositories containing them
-;(setq package-archives '(("elpa" . "http://tromey.com/elpa/")
-;                         ("gnu" . "http://elpa.gnu.org/packages/")
-;                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+;; ******************************************************
+;; Install desired packages:
+;; * smart-tabs-mode = indent with tabs and align with spaces
+;; * kmb = kill matching buffer. Kill buffer without confirmation
+;; * magit = git tool
+;; * ess = emacs speak statistics (R)
+;; * dockerfile-mode = Syntax highlighting for Dockerfiles
+;; * go-mode = major mode for the Go programming language
+;; * rust-mode = major mode for the Rust programming language
+(display-buffer "*scratch*")
+(switch-to-buffer "*scratch*")
+(redisplay)
+(with-current-buffer "*scratch*"
+  (goto-char (point-max))
+  (insert "Detecting what Emacs packages that should be installed\n")
+  )
 
-; activate all the packages (in particular autoloads)
-;(package-initialize)
+(setq package-list '(smart-tabs-mode kmb treemacs dockerfile-mode))
+
+(when (file-exists-p "/usr/bin/git")
+  (setq package-list (append package-list '(magit))))
+(when (file-exists-p "/usr/bin/R")
+  (setq package-list (append package-list '(ess))))
+(when (file-exists-p "/usr/bin/cargo")
+  (setq package-list (append package-list '(rust-mode))))
+(when (file-exists-p "/usr/bin/go")
+  (setq package-list (append package-list '(go-mode))))
+(when (file-exists-p "/usr/bin/clangd")
+  (setq package-list (append package-list '(lsp-mode flycheck lsp-treemacs lsp-pyright lsp-ui))))
+
+;; ******************************************************
+;; Emacs package repository used with 'list-packages'
+(switch-to-buffer "*scratch*")
+(with-current-buffer "*scratch*"
+  (goto-char (point-max))
+  (insert "Fetching packages")
+  )
+
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa-stable" . "https://stable.melpa.org/packages/")
+   t)
+  (package-initialize))
 
 ; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
+(with-current-buffer "*scratch*"
+  (goto-char (point-max))
+  (insert " ... downloaded\n")
+  )
+
 ; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
-    (package-install package)))
+	(with-current-buffer "*scratch*"
+      (goto-char (point-max))
+      (insert (concat "Installing: " (symbol-name package))))
+    (package-install package)
+	(with-current-buffer "*scratch*"
+      (goto-char (point-max))
+      (insert " ... installed\n")
+	  )
+	)
+  )
 
 ; This package is needed for 'kmb-kill-matching-buffers-no-ask'
 ; when pressing C-g.
 (require 'kmb)
 
 (global-set-key (kbd "C-g") 'hn-keyboard-quit)
+(global-set-key (kbd "M-p h") 'hn-help)
 (global-set-key (kbd "M-p t") 'treemacs)
 
 (when (file-exists-p "/usr/bin/git")
@@ -132,3 +154,12 @@
 	:ensure t
 	:hook ((c-mode c++-mode) . lsp)
 	:commands lsp))
+
+(defun open-my-help ()
+  "Open a specific file when no files are provided at startup."
+  (when (equal (length command-line-args) 1)
+    (hn-help)
+	)
+  )
+
+(add-hook 'emacs-startup-hook 'open-mh-help)
