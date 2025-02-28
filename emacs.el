@@ -162,4 +162,4 @@
 	)
   )
 
-(add-hook 'emacs-startup-hook 'open-mh-help)
+(add-hook 'emacs-startup-hook 'open-my-help)
