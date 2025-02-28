@@ -164,4 +164,12 @@
 	)
   )
 
+(defun hn-adjust-font-size (delta)
+  "Increase or decrease font size for all GUI elements by DELTA."
+  (interactive)
+  (let* ((current-font (face-attribute 'default :height))
+         (new-font (+ current-font delta)))
+    (set-face-attribute 'default nil :height new-font)
+    (message "Font size set to %d" new-font)))
+
 (provide 'hn-compile)

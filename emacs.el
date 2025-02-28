@@ -124,6 +124,9 @@
 (global-set-key (kbd "M-p h") 'hn-help)
 (global-set-key (kbd "M-p t") 'treemacs)
 
+(global-set-key (kbd "C-+") (lambda () (interactive) (hn-adjust-font-size 10)))
+(global-set-key (kbd "C--") (lambda () (interactive) (hn-adjust-font-size -10)))
+
 (when (file-exists-p "/usr/bin/git")
   (global-set-key (kbd "M-p g") 'magit-status))
 
