@@ -102,6 +102,9 @@
   (interactive)
   (progn
 	(find-file "~/.emacs.d/help.rst")
+	(with-current-buffer "help.rst"
+	  (read-only-mode 1)
+	  )
 	)
   )
 
@@ -151,6 +154,14 @@
 	)
   (kmb-kill-matching-buffers-no-ask "magit.*")
   (keyboard-quit)
+  )
+
+(defun hn-scratch-add (text)
+  "Adds some text to the *scratch* buffer"
+  (with-current-buffer "*scratch*"
+	(goto-char (point-max))
+	(insert text)
+	)
   )
 
 (provide 'hn-compile)

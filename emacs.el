@@ -61,6 +61,9 @@
 	  `((".*" ,temporary-file-directory t)))
 ;; (setq create-lockfiles nil)
 
+
+
+
 ;; ******************************************************
 ;; Install desired packages:
 ;; * smart-tabs-mode = indent with tabs and align with spaces
@@ -71,12 +74,7 @@
 ;; * go-mode = major mode for the Go programming language
 ;; * rust-mode = major mode for the Rust programming language
 (display-buffer "*scratch*")
-(switch-to-buffer "*scratch*")
-(redisplay)
-(with-current-buffer "*scratch*"
-  (goto-char (point-max))
-  (insert "Detecting what Emacs packages that should be installed\n")
-  )
+(hn-scratch-add "Detecting what Emacs packages that should be installed\n")
 
 (setq package-list '(smart-tabs-mode kmb treemacs dockerfile-mode))
 
@@ -93,11 +91,7 @@
 
 ;; ******************************************************
 ;; Emacs package repository used with 'list-packages'
-(switch-to-buffer "*scratch*")
-(with-current-buffer "*scratch*"
-  (goto-char (point-max))
-  (insert "Fetching packages")
-  )
+(hn-scratch-add "Fetching packages")
 
 (when (>= emacs-major-version 24)
   (require 'package)
@@ -111,22 +105,14 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-(with-current-buffer "*scratch*"
-  (goto-char (point-max))
-  (insert " ... downloaded\n")
-  )
+(hn-scratch-add " ... downloaded\n")
 
 ; install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
-	(with-current-buffer "*scratch*"
-      (goto-char (point-max))
-      (insert (concat "Installing: " (symbol-name package))))
+	(hn-scratch-add (concat "Installing: " (symbol-name package)))
     (package-install package)
-	(with-current-buffer "*scratch*"
-      (goto-char (point-max))
-      (insert " ... installed\n")
-	  )
+	(hn-scratch-add " ... installed\n")
 	)
   )
 
