@@ -139,8 +139,15 @@
 (defun hn-keyboard-quit ()
   "Extends the normal keyboard-quit with removal of buffers not needed."
   (interactive)
-  (setq buffer-names '("*Help*" "*Backtrace*" "*Completions*" "*scratch*"
-					   "*Buffer List*" "*compilation*" "*Warnings*" "*Shell Command Output*"
+  (setq buffer-names '(
+					   "*Help*"
+					   "*Backtrace*"
+					   "*Completions*"
+					   "*scratch*"
+					   "*Buffer List*"
+					   "*compilation*"
+					   "*Warnings*"
+					   "*Shell Command Output*"
 					   "*Compile-Log*"
 					   "*xref*"
 					   "*vc-diff*"))

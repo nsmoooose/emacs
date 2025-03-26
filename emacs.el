@@ -67,25 +67,59 @@
 ;; ******************************************************
 ;; Install desired packages:
 ;; * smart-tabs-mode = indent with tabs and align with spaces
-;; * kmb = kill matching buffer. Kill buffer without confirmation
-;; * magit = git tool
-;; * ess = emacs speak statistics (R)
-;; * dockerfile-mode = Syntax highlighting for Dockerfiles
-;; * go-mode = major mode for the Go programming language
-;; * rust-mode = major mode for the Rust programming language
 (display-buffer "*scratch*")
 (hn-scratch-add "Detecting what Emacs packages that should be installed\n")
 
-(setq package-list '(smart-tabs-mode kmb treemacs dockerfile-mode))
+(setq package-list '(smart-tabs-mode))
 
+;; * kmb = kill matching buffer. Kill buffer without confirmation
+(setq package-list (append package-list '(kmb)))
+
+;; treemacs for project sidebar
+(setq package-list (append package-list '(treemacs)))
+
+;; Lorem-ipsum functions for generating chunks of texts
+(setq package-list (append package-list '(lorem-ipsum)))
+
+;; Jinja2-mode for those files with extension .j2
+(setq package-list (append package-list '(jinja2-mode)))
+
+;; YAML file support
+(setq package-list (append package-list '(yaml-mode)))
+
+;; Support for Dockerfile and LSP
+(when (or (file-exists-p "/usr/bin/docker") (file-exists-p "/usr/bin/podman"))
+  (setq package-list (append package-list '(dockerfile-mode lsp-docker))))
+
+;; Support for Julia
+(when (file-exists-p "/usr/bin/julia")
+  (setq package-list (append package-list '(lsp-julia))))
+
+;; Support for GIT using magit
 (when (file-exists-p "/usr/bin/git")
   (setq package-list (append package-list '(magit))))
+
+;; Support for the R programming language. Emacs Speak Statistics (R)
 (when (file-exists-p "/usr/bin/R")
   (setq package-list (append package-list '(ess))))
+
+;; Support for Rust language
 (when (file-exists-p "/usr/bin/cargo")
   (setq package-list (append package-list '(rust-mode))))
+
+;; Support for Golang
 (when (file-exists-p "/usr/bin/go")
   (setq package-list (append package-list '(go-mode))))
+
+;; Support for Java
+(when (file-exists-p "/usr/bin/java")
+  (setq package-list (append package-list '(lsp-java))))
+
+;; Support for Java
+(when (file-exists-p "/usr/bin/pdflatex")
+  (setq package-list (append package-list '(lsp-latex))))
+
+;; Support LSP mode with the clangd toolkit.
 (when (file-exists-p "/usr/bin/clangd")
   (setq package-list (append package-list '(lsp-mode flycheck lsp-treemacs lsp-pyright lsp-ui))))
 
@@ -123,6 +157,7 @@
 (global-set-key (kbd "C-g") 'hn-keyboard-quit)
 (global-set-key (kbd "M-p h") 'hn-help)
 (global-set-key (kbd "M-p t") 'treemacs)
+(global-set-key (kbd "M-p e") 'lsp-treemacs-errors-list)
 
 (global-set-key (kbd "C-+") (lambda () (interactive) (hn-adjust-font-size 10)))
 (global-set-key (kbd "C--") (lambda () (interactive) (hn-adjust-font-size -10)))
