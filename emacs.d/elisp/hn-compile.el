@@ -104,6 +104,7 @@
 	(find-file "~/.emacs.d/help.rst")
 	(with-current-buffer "help.rst"
 	  (read-only-mode 1)
+	  (cd "~")
 	  )
 	)
   )
