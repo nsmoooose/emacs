@@ -84,6 +84,9 @@
 ;; Jinja2-mode for those files with extension .j2
 (setq package-list (append package-list '(jinja2-mode)))
 
+;; ninja-mode color for ninja build files
+(setq package-list (append package-list '(ninja-mode)))
+
 ;; YAML file support
 (setq package-list (append package-list '(yaml-mode)))
 
