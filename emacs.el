@@ -107,7 +107,9 @@
   (setq package-list (append package-list '(ess))))
 
 ;; Support for Rust language
-(when (file-exists-p "/usr/bin/cargo")
+(when (or (file-exists-p "/usr/bin/cargo")
+		  (file-exists-p "/usr/sbin/cargo")
+		  (file-exists-p "~/.cargo/bin/cargo"))
   (setq package-list (append package-list '(rust-mode))))
 
 ;; Support for Golang
